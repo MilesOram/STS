@@ -6,7 +6,8 @@ As the sole contributor to this project, I was responsible for the design, devel
 ## Slay the Spire
 For those unfamiliar with the game, Slay the Spire is a card game where you attempt to climb 50 floors, separated into 3 acts, of varying events (with an additional short 4th act). The player aims to acquire cards, relics (unique items to help the player in and out of fights) and potions (one time use, primarily used to help in fights) while not dying on their journey up the spire. You encounter random events, campfires to heal or upgrade cards, shops to spend gold and acquire resources, but most frequently fight enemies. Enemies will either be in traditional hallway fights, more difficult elite fights, or a boss enemy at the end of each act. Fights can be boiled down to a card game where your character faces the enemies. By playing cards using energy, you attempt to deal damage to them, or mitigate damage dealt to you. Each fight ends with either your death, and the loss of the run, or the enemies defeated and the offering of various rewards as you continue on. Computational performance was always a priority over impressive visuals so the project was kept as a text-based recreation as shown below.
 
-vis img
+![Real Visuals](/WriteUp/STSreal.PNG)
+![Text Visuals](/WriteUp/STStext.PNG)
 
 ## Technical Design
 The use of the observer design pattern permeates the entire codebase, appearing frequently to facilitate the triggers and effects of cards, relics and potions. Certain classes need to observe several events and therefore hold and manage a set of templated observers. The 'gamestate' and 'all_pc_info' classes are both singleton classes and are used to store caches for frequently calculated values, hold databases from which to clone items and contain all the unique game and player information, respectively. This is a highly object-oriented focused project with multiple inheritance structures.
@@ -14,7 +15,10 @@ The use of the observer design pattern permeates the entire codebase, appearing 
 ## Challenges and Solutions
 One of the main challenges was inferring the nature of the design for some of the more unintuitive and complex mechanics in the game. Managing the ordering of observer triggers when cards are played from the top of the deck and duplicated required a few iterations of design to hone a proper solution. Also, recreating the procedural map generation was a non-trivial exercise given the edge cases which require unique handling thanks to the stipulations on each map node.
 
-map img
+<p float="left">
+  <img src="/WriteUp/STSmapreal.png" width="400" />
+  <img src="/WriteUp/StSmaptext1.PNG" width="400" /> 
+</p>
 
 ## Testing and Debugging
 There was a necessity for a system to randomly generate decks and iterate through every fight with all permutations of relics, cards and potions to train the fight AI. This coincided with a need to rigorously test for bugs in all edge cases. In unison with an intuition for the more complex interactions in the game, manual testing and checking old patch notes for bugs previously present in the game, testing was handled well.
@@ -32,7 +36,7 @@ Avoid compromises wherever possible. It seemed like the worst way to start a ML 
 ## Technical Design
 All the decisions in a run of the game can be divided into three categories: hard-coded responses (used sparingly and primarily for simple or rng random map events), micro fight decisions (every decision made during fights) and macro run decisions (everything remaining outside of fights). Micro decisions are governed by a DQN which gives an approximation of the future expected reward for playing each card. Multi-step cards (cards that require you to choose a target or card after casting) are simulated when chosen, and the most optimal sub-decision is chosen. The macro model makes use of two traditional NNs: one that gives the expected health loss and a measure of variance for every fight in the game, and the other that gives the expected end floor. The expected health losses feed into the main macro model for expected end floor, which is used to evaluate simulated macro decisions and act optimally. The machine learning side is written in python and integrated with use of the pybind11 library.
 
-model img
+![Micro model](/WriteUp/MicroModel.PNG)
 
 Micro: Input size: 1325. Action space size: 296. Total trainable parameters: ~18,000,000. Uses Mean Squared Error (MSE) loss function and Adam optimizer. 
 
