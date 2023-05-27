@@ -1,7 +1,7 @@
 # STS
 As close to a 1:1 text-based replica of Slay the Spire as possible. Used for Deep Reinforcement Learning of the game.
 
-The game is built entirely in C++ and currently includes everything for a complete, faithful Ironclad run. All cards, enemies, events, potions and relics are present (excluding things like prismatic shard since only the Ironclad and colourless card pools are available). Ascension is not yet implemented so it functions on the base difficulty. The map generation was also recreated. The project evolved over time into a Machine Learning project with the goal to beat the game autonomously, without fluke.
+The game is built entirely in C++ and currently includes everything for a complete, faithful Ironclad run. All cards, enemies, events, potions and relics are present (excluding things like prismatic shard since only the Ironclad and colourless card pools are available). Ascension is not yet implemented so it functions on the base difficulty. The map generation was also recreated. The project evolved over time into a Machine Learning project with the goal to beat the game autonomously, without relying on chance or happenstance.
 
 # Deep Reinforcement Learning
 The replica was used as the foundation for a Deep Reinforcement Learning project. Using Python, several TensorFlow models were designed and trained to play the game. This was integrated using the pybind11 library. A mixture of traditional Neural Networks (NNs) and a Deep Q-Learning Network (DQN) are used to handle/learn the micro (in-fight) and macro (out-of-fight) decisions. 
