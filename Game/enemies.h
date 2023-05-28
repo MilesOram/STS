@@ -1195,7 +1195,7 @@ private:
 public:
     awakenedOne(void (awakenedOne::* dI)() = nullptr, bool a = false) : awakened(a), declaredIntent(dI), nonpc(300, "Awakened One")
     {
-        enemyIDNumber = 61; allAttacks = { "slash","soulStrike","darkEcho","sludge","tackle" }; dormant_ = true; dormant_turns_ = 0;
+        enemyIDNumber = 61; allAttacks = { "slash","soulStrike","darkEcho","sludge","tackle" }; dormant_ = true; dormant_turns_ = 0; storedStrength = 0;
     }
     static int storedStrength;
     ~awakenedOne() {}
