@@ -5135,7 +5135,7 @@ void gamestate::advanceRealEvent()
         inputNumbers.push_back(to_string(i));
         if(!ai) std::cout << i << ": for " << next_floors_[i - 1]->name << ". ";
     }
-    if (aiEventActionBuffer.empty()) makePathChoiceFromNeutral();
+    if (ai && aiEventActionBuffer.empty()) makePathChoiceFromNeutral();
     string s = request_input(inputNumbers);
     int i = stoi(s) - 1;
     if (nextEvent && (mapPath[mapPathIndex - 1] == 'N' || mapPath[mapPathIndex - 1] == 's' || mapPath[mapPathIndex - 1] == 'C' || mapPath[mapPathIndex - 1] == '?'))
