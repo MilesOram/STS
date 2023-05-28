@@ -1629,6 +1629,7 @@ void neowEvent::printOptions()
 }
 void neowEvent::choiceOutcomes(int choice)
 {
+    --choice;
     int rng = secondRNG;
     switch (choice)
     {
