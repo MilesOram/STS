@@ -5098,7 +5098,7 @@ void gamestate::genRealMap()
         delete mapGen;
         mapGen = new gen;
     };
-    mapGen->showMap();
+    //mapGen->showMap();
 }
 void gamestate::advanceRealEvent()
 {
