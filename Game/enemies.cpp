@@ -3327,6 +3327,10 @@ void awakenedOne::tackle()
 {
     effects::singleTargetMulti(*this, apci.getPlayer(), 10, 3);
 }
+void setAOstored(int val)
+{
+    awakenedOne::storedStrength = val;
+}
 void awakenedOne::chooseAndDeclareIntent()
 {
     if (!awakened)
