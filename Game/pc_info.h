@@ -106,6 +106,7 @@ public:
     void addCardToBackOfStack(cardHolder&& ch);
     void randomHandCostZero();
     void chooseHandCostZero();
+    void makeCostZeroPlayed(cardHolder& ch);
     void makeCostZero(cardHolder& ch);
     void makeCostOne(cardHolder& ch);
     void makeCostZero(card* c);
