@@ -1760,6 +1760,13 @@ void all_pc_info::spendGold(int i)
     gold_ -= i;
     gm.callGoldSpent();
 }
+void all_pc_info::makeCostZeroPlayed(cardHolder& ch)
+{
+    if ((*ch).getEnergy() == -1) return;
+    auto t2 = new zeroCostTrigger<card>(ch.getCardPointer(), gm.getCardPlayed());
+    (*ch).observeEvent<zeroCostTrigger<card>>(gm.getCardPlayed(), t2);
+    (*ch).setZeroUntilPlayed(true);
+}
 void all_pc_info::makeCostZero(cardHolder& ch)
 {
     if ((*ch).getEnergy() == -1) return;
