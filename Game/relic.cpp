@@ -15,13 +15,20 @@ void akabeko::execute()
 }
 void akabeko::fightStartSetup()
 {
+    firstAttack = true;
+    attStart = false;
     observeThis(gm.getAlterBaseADFromPlayer());
 }
 void akabeko::triggered()
 {
-    if (firstAttack == 1)
+    if (attStart && (gm.turnCount > 0 || gm.attackCount > 0))
     {
-        firstAttack = -1;
+        firstAttack = false;
+        return;
+    }
+    attStart = true;
+    if (firstAttack)
+    {
         execute();
     }
 }
