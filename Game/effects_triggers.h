@@ -1003,7 +1003,7 @@ void awakenedDeathTrigger<D>::triggered(character& enemy)
 {
     if (enemy.getSCRNIndex() == this->holdsObs_->getSCRNIndex())
     {
-        awakenedOne::storedStrength = clamp(this->holdsObs_->getTotalStrength(), 0, 99);
+        setAOstored(clamp(this->holdsObs_->getTotalStrength(), 0, 99));
     }
 }
 template<typename D>
