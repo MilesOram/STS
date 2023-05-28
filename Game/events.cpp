@@ -1181,7 +1181,7 @@ void shop::startEvent()
             else if (thisTag_ == "r3") reRollRelic(chosenIndex, thisTag_);
         }
         std::cout << "Gold: " << apci.getGold() << endl;
-        if (firstLoop)
+        if (firstLoop && ai)
         {
             gm.makePathChoiceFromNeutral(false);
             firstLoop = false;
