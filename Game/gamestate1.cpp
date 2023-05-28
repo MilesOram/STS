@@ -2983,7 +2983,16 @@ void gamestate::startAct4()
     delete nextEvent;
     mapPath[mapPathIndex] = 'E';
     nextEvent = events_el;
-    try { nextEvent->startEvent(); outerTurnLoopAI(getPyFunc()); }
+    nextEvent->startEvent();
+    try 
+    {
+        if (ai) 
+        { 
+            apci.startTurn(); 
+            outerTurnLoopAI(getPyFunc()); 
+        }
+        else { outerTurnLoop(); } 
+    }
     catch (SmokeBombError) { apci.removeSmokeBomb(); }
 
     gamestate::aiCardChoices.clear();
@@ -2995,7 +3004,12 @@ void gamestate::startAct4()
     mapPath[mapPathIndex] = 'B';
     nextEvent = events_bo;
     nextEvent->startEvent();
-    outerTurnLoopAI(getPyFunc());
+    if (ai)
+    {
+        apci.startTurn();
+        outerTurnLoopAI(getPyFunc());
+    }
+    else { outerTurnLoop(); }
 
 }
 void gamestate::ResetRun()
