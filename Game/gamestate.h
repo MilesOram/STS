@@ -563,6 +563,7 @@ public:
     static bool randomAIChoice;
 };
 namespace adjusted { int calcEnemyDamage(const nonpc& enemy_, const int& amount_); }
+void setAOstored(int);
 
 extern gamestate gm;
 
