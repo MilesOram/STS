@@ -1433,7 +1433,7 @@ void forethought::execute()
         int i{ 1 };
         while (itr != temp.end())
         {
-            apci.makeCostZero(apci.getHand()[*itr-i]);
+            apci.makeCostZeroPlayed(apci.getHand()[*itr-i]);
             apci.addCardToDrawBack(apci.getHand()[*itr-i]);
             apci.removeHandCard(apci.getHand().begin() + (*itr - i));
             ++i; ++itr;
@@ -1449,7 +1449,7 @@ void forethought::execute()
         {
             if (temp.getID() == (*temp2)[i].getID())
             {
-                apci.makeCostZero(( * temp2)[i]);
+                apci.makeCostZeroPlayed(( * temp2)[i]);
                 apci.addCardToDrawBack((*temp2)[i]);
                 apci.removeHandCard(apci.getHand().begin() + i);
                 break;
