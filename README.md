@@ -22,3 +22,5 @@ The micro model was trained using a mixture of randomly generated and pre-made d
 Currently the highest rolling average end floor, during training, over a sample of 100 runs is: 24.8. Similarly the highest win rate is: 4%. It is worth noting that these two measures are at odds with one another. Training to optimize win rate is a certain way to ingrain sub-optimal tendencies, at the same time the goal is to win. The game has been beaten over 100 times during the 10,000-20,000 training runs. Beating the game with any remote consistency is an achievement and makes the project a success with a promising future.
 
 ### See the WriteUp folder for more info and figures.
+
+### For a playable version with the python stripped away, see this [repo](https://github.com/MilesOram/STS-Playable).
